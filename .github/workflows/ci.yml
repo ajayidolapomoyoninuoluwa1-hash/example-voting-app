@@ -12,6 +12,7 @@ jobs:
   build-scan-push:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         service: [vote, result, worker]
     steps:
