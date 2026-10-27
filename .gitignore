@@ -1,9 +1,10 @@
-*.pyc
-project.lock.json
-bin/
-obj/
-.vs/
-node_modules/
-build-log.txt
-compose-up.log
-example-voting-app/
+# Terraform
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.*
+terraform/.terraform.lock.hcl
+terraform/terraform_*.zip
+
+# Download artifacts
+terraform_*.zip
+LICENSE.txt
