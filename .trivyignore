@@ -1,0 +1,5 @@
+# CVE-2026-23949: jaraco.context vendored inside setuptools, cannot upgrade independently
+CVE-2026-23949
+
+# CVE-2026-24049: wheel vendored inside setuptools, cannot upgrade independently  
+CVE-2026-24049
