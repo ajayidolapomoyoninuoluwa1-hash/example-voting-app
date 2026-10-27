@@ -35,8 +35,8 @@ jobs:
           push: false
           tags: ghcr.io/ajayidolapomoyoninuoluwa1-hash/${{ matrix.service }}:${{ github.sha }}
 
-      - name: Scan with Trivy
-        uses: aquasecurity/trivy-action@0.36.0
+            - name: Scan with Trivy
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: ghcr.io/ajayidolapomoyoninuoluwa1-hash/${{ matrix.service }}:${{ github.sha }}
           severity: CRITICAL,HIGH
