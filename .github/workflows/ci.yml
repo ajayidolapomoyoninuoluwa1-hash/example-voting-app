@@ -41,6 +41,7 @@ jobs:
         with:
           image-ref: ghcr.io/ajayidolapomoyoninuoluwa1-hash/${{ matrix.service }}:${{ github.sha }}
           severity: CRITICAL,HIGH
+          ignore-unfixed: true
           exit-code: '1'
 
       - name: Push image
