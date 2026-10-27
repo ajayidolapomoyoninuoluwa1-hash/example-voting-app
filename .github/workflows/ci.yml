@@ -33,6 +33,7 @@ jobs:
         with:
           context: ./${{ matrix.service }}
           push: false
+          load: true
           tags: ghcr.io/ajayidolapomoyoninuoluwa1-hash/${{ matrix.service }}:${{ github.sha }}
 
       - name: Scan with Trivy
