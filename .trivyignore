@@ -71,3 +71,6 @@ CVE-2020-16156
 CVE-2023-31484
 # System.Drawing.Common — transitive/false positive; not exploited in this worker's usage.
 CVE-2021-24112
+
+# System.Drawing.Common — transitive/false positive; not exploited in this worker's usage.
+CVE-2021-24112
