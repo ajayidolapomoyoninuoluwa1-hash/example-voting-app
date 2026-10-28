@@ -1,0 +1,89 @@
+# One values file for the whole Voting App.
+# Each component is an entry under "services".
+# Adding a component means adding an entry — no new template needed.
+
+services:
+  vote:
+    image:
+      repository: ghcr.io/ajayidolapomoyoninuoluwa1-hash/vote
+      tag: latest
+    replicas: 2
+    containerPort: 8080
+    service:
+      type: ClusterIP
+      port: 8080
+    env:
+      REDIS_HOST: redis
+      REDIS_PORT: "6379"
+    resources:
+      requests: { cpu: 100m, memory: 128Mi }
+      limits:   { cpu: 500m, memory: 256Mi }
+
+  result:
+    image:
+      repository: ghcr.io/ajayidolapomoyoninuoluwa1-hash/result
+      tag: latest
+    replicas: 2
+    containerPort: 8080
+    service:
+      type: ClusterIP
+      port: 8080
+    env:
+      POSTGRES_HOST: db
+      POSTGRES_PORT: "5432"
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    resources:
+      requests: { cpu: 100m, memory: 128Mi }
+      limits:   { cpu: 500m, memory: 256Mi }
+
+  worker:
+    image:
+      repository: ghcr.io/ajayidolapomoyoninuoluwa1-hash/worker
+      tag: latest
+    replicas: 1
+    containerPort: 0          # worker has no web port
+    service: null             # no Service for the worker
+    env:
+      REDIS_HOST: redis
+      REDIS_PORT: "6379"
+      POSTGRES_HOST: db
+      POSTGRES_PORT: "5432"
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    resources:
+      requests: { cpu: 100m, memory: 128Mi }
+      limits:   { cpu: 500m, memory: 256Mi }
+
+  redis:
+    image:
+      repository: redis
+      tag: alpine
+    replicas: 1
+    containerPort: 6379
+    service:
+      type: ClusterIP
+      port: 6379
+    env: {}
+    resources:
+      requests: { cpu: 50m, memory: 64Mi }
+      limits:   { cpu: 250m, memory: 128Mi }
+
+  db:
+    image:
+      repository: postgres
+      tag: "15-alpine"
+    replicas: 1
+    containerPort: 5432
+    service:
+      type: ClusterIP
+      port: 5432
+    env:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    resources:
+      requests: { cpu: 100m, memory: 256Mi }
+      limits:   { cpu: 500m, memory: 512Mi }

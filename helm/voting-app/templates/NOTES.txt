@@ -1,0 +1,13 @@
+Thank you for installing {{ .Chart.Name }}.
+
+Your release is named {{ .Release.Name }}.
+
+To check the status of your services:
+  kubectl get pods
+  kubectl get svc
+
+To access the vote page locally, run:
+  kubectl port-forward svc/vote 8080:8080
+
+To access the result page locally, run:
+  kubectl port-forward svc/result 8081:8080

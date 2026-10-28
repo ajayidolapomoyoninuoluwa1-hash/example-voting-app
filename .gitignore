@@ -8,3 +8,4 @@ terraform/terraform_*.zip
 # Download artifacts
 terraform_*.zip
 LICENSE.txt
+terraform/voting-app-tf-config
