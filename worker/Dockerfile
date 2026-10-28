@@ -16,7 +16,7 @@ RUN echo "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM"
 
 WORKDIR /source
 # cache-bust: 2026-10-28
-COPY *.csproj .
+COPY Worker.csproj .
 RUN dotnet restore Worker.csproj -a $TARGETARCH
 
 COPY . .
