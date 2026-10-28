@@ -15,8 +15,9 @@ ARG BUILDPLATFORM
 RUN echo "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM"
 
 WORKDIR /source
+# cache-bust: 2026-10-28
 COPY *.csproj .
-RUN dotnet restore -a $TARGETARCH
+RUN dotnet restore Worker.csproj -a $TARGETARCH
 
 COPY . .
 RUN dotnet publish -c release -o /app -a $TARGETARCH --self-contained false --no-restore
